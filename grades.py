@@ -280,7 +280,8 @@ def gpa():
         else:
             hours+=get_class_by_code(code)[2]
             gpa+=get_class_by_code(code)[2]*grade_points(code)
-    return round(gpa/hours,2)
+    if hours>0: return round(gpa/hours,2)
+    else: return 0
 
 
 def max_letter_grade(code):

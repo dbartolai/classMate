@@ -8,7 +8,7 @@ class ClassMate(tk.Frame):
         self.green = '#1D9919'
         self.black = '#000000'
         self.red = '#E41E1E'
-        self.grey = '#FF99FF' 
+        self.grey = '#BFBFBF' 
         self.darkgrey = '#808080'
 
         
@@ -777,14 +777,14 @@ class ClassMate(tk.Frame):
                     bg=self.grey
                 )
                 maxgrade_label.grid(row=row, column=4, sticky=tk.W, padx = 10)
-        gpa_label = tk.Label (
-            self.page,
-            text=f'GPA: {grades.gpa()}',
-            fg='black',
-            bg=self.grey,
-            font=('Times New Roman', 24, 'bold'),
-        )
-        gpa_label.grid(row=len(self.courses)+3, column=0)
+                gpa_label = tk.Label (
+                    self.page,
+                    text=f'GPA: {grades.gpa()}',
+                    fg='black',
+                    bg=self.grey,
+                    font=('Times New Roman', 24, 'bold'),
+                )
+                gpa_label.grid(row=len(self.courses)+3, column=0)
 
     def update_letter_cutoff(self, code, letter, entry):
         new=float(entry.get())
