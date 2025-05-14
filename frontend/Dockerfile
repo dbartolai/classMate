@@ -11,6 +11,4 @@ RUN npm install -g serve
 
 CMD ["serve", "-s", "dist"]
 
-EXPOSE 4173
-
   
