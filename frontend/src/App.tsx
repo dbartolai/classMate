@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import GenerateQuiz from './Generate'
+import Generate from './Generate'
 import Quiz from './Quiz'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<GenerateQuiz/>}/>
+          <Route path="/" element={<Generate/>}/>
           <Route path="/quiz" element={<Quiz/>}/>
         </Routes>
       </Router>

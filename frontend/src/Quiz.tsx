@@ -2,7 +2,7 @@ import Question from "./Question"
 import { useState } from 'react'
 
 
-function Quiz(){
+function Quiz({ }){
 
     const [question, setQuestion] = useState('')
     const [A, setA] = useState('')

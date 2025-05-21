@@ -74,12 +74,12 @@
 }
 
 .submit:hover{
-    background-color: #168594;
+    background-color: #1a92a2;
     transform: scale(1.02)
 }
 
 .submit:active{
-    background-color: #1a92a2;
+    background-color: #168594;
     transform: scale(0.97);
 }
 

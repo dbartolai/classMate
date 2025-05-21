@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./Generate.css"
 
@@ -6,9 +6,11 @@ function GenerateQuiz(){
 
     const [subject, setSubject] = useState('')
     const [topics, setTopics] = useState('')
-    const [num, setNum] = useState(0)
+    const [num, setNum] = useState(10)
 
     const navigate = useNavigate()
+
+    const valid = subject.trim() !== '' && topics.trim() !== ''
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -31,11 +33,7 @@ function GenerateQuiz(){
                 throw new Error("Failed to fetch quiz")
             }
 
-            const data = await res.json()
-
-            navigate('/quiz', {
-                state: {data},
-            })
+            const data = await res.json() //Send this data to /quiz
 
         } catch (err) {
             console.error(err)
@@ -43,34 +41,46 @@ function GenerateQuiz(){
     }
     return (
         <>
+        <div className='main'>
             <div className="quiz-form-div">
                 <form className="quiz-form" onSubmit={handleSubmit}>
-                    <h2>Subject: </h2>
-                    <input 
-                        placeholder="Subject" 
-                        className="quiz-input"
-                        value={subject}
-                        onChange={(e) => setSubject(e.target.value)}
-                    />
-                    <h2>Topics: </h2>
-                    <input
-                        placeholder="Topics (Comma Separated List)" 
-                        className="quiz-input"
-                        value={topics}
-                        onChange={(e) => setTopics(e.target.value)}
-                    />
-                    <h2>Questions: </h2>
-                    <input
-                        type='number'
-                        className='quiz-input'
-                        min="1"
-                        max="20"
-                        value={num}
-                        onChange={(e) => setNum(e.target.valueAsNumber)}
-                    />
-                    <button className="gen-button">Generate Quiz</button>
+                    <h1 className='quiz-gen-title'>Generate Quiz</h1>
+                    <div className="input-div">
+                        <label htmlFor="subject" className='input-label'>Subject </label>
+                        <input 
+                            placeholder="Differential Equations" 
+                            id="subject"
+                            className="quiz-input"
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
+                        />
+                    </div>
+                    <div className='input-div'>
+                        <label htmlFor="topics" className='input-label'>Topics </label>
+                        <input
+                            placeholder="Eigenvalues, Laplace Transform, First-Order ODEs" 
+                            id="topics"
+                            className="quiz-input"
+                            value={topics}
+                            onChange={(e) => setTopics(e.target.value)}
+                        />
+                    </div>
+                    <div className='input-div'>
+                    <label htmlFor="number" className='input-label'>Questions </label>
+                        <input
+                            type='number'
+                            className='quiz-input-number'
+                            id="number"
+                            min="1"
+                            max="20"
+                            value={num}
+                            onChange={(e) => setNum(e.target.valueAsNumber)}
+                        />
+                    </div>
+                    <button className="gen-button" type="submit" disabled={!valid}>Generate Quiz</button>
                 </form>
             </div>
+        </div>
         </>
     )
 }
