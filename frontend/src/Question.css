@@ -1,0 +1,147 @@
+.main{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.question-box{
+    border-radius: 30px;
+    border: solid #32322c 1px;
+    background-color: #ffffff;
+    width: 29vw;
+    padding: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+}
+
+
+.question-div{
+    border-radius: 30px;
+    border: solid #32322c 1px;
+    background-color: #ffffff;
+    width: 60vw;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.answer-div{
+    display: flex;
+    border-radius: 20px;
+}
+
+.selected-question-box{
+    display: flex;
+    border-radius: 30px;
+    background-color: #f8ffe5;
+}
+
+
+.question-box:hover {
+    background-color: #e9f0d6; 
+    transform: scale(1.02)
+}
+
+.question-box:active {
+    background-color: #dbe3cc; 
+    transform: scale(0.98);
+}
+
+
+.answer-text-div{
+    display: flex;
+    align-items: center;
+}
+
+.letter-div{
+    margin: 0 40px 0 40px;
+}
+.submit{
+    background-color: #1b9aaa;
+    border: none;
+    height: 50px;
+    border-radius: 10px;
+    width: 200px;
+    font-size: 16px;
+    margin-right: 20px;
+    border: solid #32322c 1px;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+.submit:hover{
+    background-color: #168594;
+    transform: scale(1.02)
+}
+
+.submit:active{
+    background-color: #1a92a2;
+    transform: scale(0.97);
+}
+
+.help{
+    background-color: #ffc43d;
+    color: #000000;
+    border: none;
+    height: 50px;
+    border-radius: 10px;
+    width: 200px;
+    font-size: 16px;
+    border: solid #32322c 1px;
+    transition: background-color 0.1s ease, transform 0.1s ease;
+    cursor: pointer;
+}
+
+.help:hover{
+    background-color: #edb73a;
+    transform: scale(1.02);
+}
+
+.help:active{
+    background-color: #daa835;
+    transform: scale(0.97);
+}
+
+
+
+.control-div{
+    display: flex;
+    margin-top: 20px;
+}
+
+.q-button{
+    border: none;
+    background-color: #e1e1e1;
+    border: solid #32322c 1px;
+    border-radius: 10px;
+    height: 40px; 
+    transition: background-color 0.1s ease, transform 0.1s ease;
+    cursor: pointer;   
+}
+
+.q-button:hover{
+    background-color: #b8b8b8;
+    transform: scale(1.02);
+}
+
+.q-button:active{
+    background-color: #8c8b8b;
+    transform: scale(0.98);
+}
+
+.top-questions{
+    display: flex;
+    width: 60vw;
+    justify-content: space-between;
+}
+
+.bottom-questions{
+    display: flex;
+    width: 60vw;
+    justify-content: space-between;
+}
+

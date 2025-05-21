@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import "./Generate.css"
 
 function GenerateQuiz(){
@@ -6,7 +7,8 @@ function GenerateQuiz(){
     const [subject, setSubject] = useState('')
     const [topics, setTopics] = useState('')
     const [num, setNum] = useState(0)
-    const [quiz, setQuiz] = useState('')
+
+    const navigate = useNavigate()
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -31,10 +33,12 @@ function GenerateQuiz(){
 
             const data = await res.json()
 
-            setQuiz(JSON.stringify(data, null, 2))
+            navigate('/quiz', {
+                state: {data},
+            })
+
         } catch (err) {
             console.error(err)
-            setQuiz("Error fetching quiz")
         }
     }
     return (
@@ -66,9 +70,6 @@ function GenerateQuiz(){
                     />
                     <button className="gen-button">Generate Quiz</button>
                 </form>
-                <pre style={{ whiteSpace: "pre-wrap", marginTop: "1em" }}>
-                    {quiz}
-                </pre>
             </div>
         </>
     )
