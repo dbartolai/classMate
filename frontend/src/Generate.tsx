@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import "./Generate.css"
 
 function GenerateQuiz(){
@@ -8,7 +8,7 @@ function GenerateQuiz(){
     const [topics, setTopics] = useState('')
     const [num, setNum] = useState(10)
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const valid = subject.trim() !== '' && topics.trim() !== ''
 
@@ -33,7 +33,7 @@ function GenerateQuiz(){
                 throw new Error("Failed to fetch quiz")
             }
 
-            const data = await res.json() //Send this data to /quiz
+            // const data = await res.json() //Send this data to /quiz
 
         } catch (err) {
             console.error(err)

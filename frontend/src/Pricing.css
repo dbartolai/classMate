@@ -1,0 +1,192 @@
+.pricing-section {
+    max-width: 1050px;
+    margin: 0 auto 6vh auto;
+    padding: 3rem 2rem 2.5rem 2rem;
+    background: rgba(255,255,255,0.92);
+    border-radius: 2rem;
+    box-shadow: 0 4px 24px 0 rgba(27, 154, 170, 0.11);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pricing-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1b9aaa;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+  }
+  
+  .pricing-cards {
+    display: flex;
+    gap: 2.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .pricing-card {
+    background: #e3f6f5;
+    border-radius: 1.5rem;
+    box-shadow: 0 2px 10px 0 rgba(27, 154, 170, 0.08);
+    max-width: 300px;
+    min-width: 230px;
+    padding: 2.2rem 1.7rem 2rem 1.7rem;
+    margin-bottom: 2vh;
+    flex: 1 1 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: box-shadow 0.17s, transform 0.17s;
+  }
+  .pricing-card:hover {
+    box-shadow: 0 8px 32px 0 rgba(27, 154, 170, 0.15);
+    transform: translateY(-5px) scale(1.025);
+  }
+  
+  .pricing-popular {
+    position: absolute;
+    top: -1.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #e07a5f;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.98rem;
+    padding: 0.34em 1.2em;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px 0 rgba(224,122,95,0.13);
+    letter-spacing: 0.03em;
+  }
+  
+  .pricing-card h3 {
+    font-size: 1.27rem;
+    color: #1b9aaa;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .pricing-price {
+    font-size: 2.0rem;
+    font-weight: 700;
+    color: #21243d;
+    margin-bottom: 0.7rem;
+    margin-top: 0.15rem;
+  }
+  
+  .pricing-desc {
+    font-size: 1.04rem;
+    color: #44475a;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  
+  .pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    width: 100%;
+  }
+  .pricing-card ul li {
+    font-size: 1rem;
+    color: #374151;
+    margin-bottom: 0.6em;
+    text-align: left;
+    position: relative;
+    padding-left: 1.2em;
+  }
+  .pricing-card ul li::before {
+    content: '✓';
+    color: #1b9aaa;
+    font-weight: 600;
+    position: absolute;
+    left: 0;
+  }
+  .pricing-banner {
+    width: 100%;
+    background: #1b9aaa;
+    color: #fff;
+    font-size: 1.13rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    padding: 0.85em 1em;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
+    box-shadow: 0 2px 12px 0 rgba(27, 154, 170, 0.10);
+  }
+  .pricing-banner .highlight {
+    color: #e07a5f;
+    background: #fff4ef;
+    border-radius: 6px;
+    padding: 0 0.3em;
+    margin: 0 0.06em;
+  }
+
+  .edu-badge {
+    font-size: 0.97rem;
+    color: #e07a5f;
+    background: #fff4ef;
+    border-radius: 8px;
+    padding: 0.23em 0.7em;
+    margin-bottom: 0.7em;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .edu-discount-badge {
+    position: relative;
+    top: -0.0rem;
+    margin-bottom: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+    background: #fff4ef;
+    color: #e07a5f;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 14px;
+    padding: 0.21em 0.85em;
+    box-shadow: 0 2px 8px 0 rgba(224, 122, 95, 0.07);
+    gap: 0.45em;
+    z-index: 2;
+  }
+  
+  .edu-discount-badge strong {
+    color: #1b9aaa;
+    margin-left: 0.15em;
+    font-weight: 700;
+  }
+  
+  
+  
+  
+  .pricing-btn {
+    display: inline-block;
+    background: #1b9aaa;
+    color: #fff;
+    padding: 0.7em 2em;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px 0 rgba(27, 154, 170, 0.08);
+    transition: background 0.19s, transform 0.13s;
+    text-decoration: none;
+    margin-top: auto;
+  }
+  .pricing-btn:hover {
+    background: #157a8c;
+    transform: scale(1.04);
+  }
+  
+  @media (max-width: 900px) {
+    .pricing-cards {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .pricing-section {
+      padding: 2rem 1rem;
+    }
+  }
+  

@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Generate from './Generate'
-import Quiz from './Quiz'
+import Login from './Login'
+import Register from './Register'
+import LandingPage from './LandingPage'
 
 function App() {
 
@@ -9,8 +10,9 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Generate/>}/>
-          <Route path="/quiz" element={<Quiz/>}/>
+          <Route path="/" element={<LandingPage/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/register" element={<Register/>}/>
         </Routes>
       </Router>
     </>

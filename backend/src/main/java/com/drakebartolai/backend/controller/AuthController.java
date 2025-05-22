@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.UUID;
 
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
