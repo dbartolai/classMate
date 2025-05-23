@@ -1,8 +1,8 @@
 import React from "react";
 import "./LandingPage.css";
-import WhyItWorks from "../WhyItWorks";
-import Pricing from "../Pricing";
-import QuizCreditsInfo from "../QuizCreditsInfo";
+import WhyItWorks from "./WhyItWorks";
+import Pricing from "./Pricing";
+import QuizCreditsInfo from "./QuizCreditsInfo";
 import CountdownBanner from "./CountdownBanner";
 
 const LandingPage: React.FC = () => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./CountdownBanner.css";
 
-const TARGET_DATE = new Date("2025-08-01T00:00:00-05:00").getTime();
+const TARGET_DATE = new Date("2025-07-01T00:00:00-05:00").getTime();
 
 function getTimeLeft() {
   const now = Date.now();
@@ -39,11 +39,10 @@ const CountdownBanner: React.FC = () => {
           <span className="countdown-timer">
             {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
           </span>
-          !
           <span className="banner-offer">
             &nbsp;Join the waitlist and get your first semester for just
-            <span className="bigdeal">$25</span>
-            <span className="normal">(normally $50)</span>!
+            <span className="bigdeal">$25!</span>
+            <span className="normal">(normally $50)</span>
           </span>
         </span>
       </div>
