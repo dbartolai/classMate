@@ -1,0 +1,86 @@
+.credits-section {
+    max-width: 850px;
+    margin: 0 auto 4vh auto;
+    padding: 2.5rem 2rem 2.5rem 2rem;
+    background: rgba(255,255,255,0.92);
+    border-radius: 2rem;
+    box-shadow: 0 4px 16px 0 rgba(27, 154, 170, 0.09);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .credits-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1b9aaa;
+    margin-bottom: 1.2rem;
+    letter-spacing: -1px;
+    text-align: center;
+  }
+  
+  .credits-content {
+    display: flex;
+    gap: 2.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .credits-explainer, .credits-why {
+    background: #e3f6f5;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 8px 0 rgba(27, 154, 170, 0.07);
+    max-width: 340px;
+    min-width: 200px;
+    padding: 1.3rem 1.3rem 1.3rem 1.3rem;
+    margin-bottom: 1.2rem;
+    flex: 1 1 260px;
+  }
+  
+  .credits-explainer ul {
+    margin-top: 1em;
+    margin-bottom: 0.2em;
+    padding-left: 1.1em;
+  }
+  .credits-explainer li {
+    font-size: 1rem;
+    color: #374151;
+    margin-bottom: 0.45em;
+    position: relative;
+    list-style: disc inside;
+  }
+  
+  .credits-why h3 {
+    font-size: 1.13rem;
+    color: #1b9aaa;
+    margin-bottom: 0.7em;
+    font-weight: 700;
+  }
+  
+  .credits-explainer p,
+  .credits-why p {
+    font-size: 1.05rem;
+    color: #44475a;
+    line-height: 1.65;
+  }
+  
+  .highlight {
+    color: #e07a5f;
+    font-weight: 600;
+    background: #fff4ef;
+    border-radius: 6px;
+    padding: 0 0.22em;
+  }
+  
+  @media (max-width: 900px) {
+    .credits-content {
+      flex-direction: column;
+      gap: 1.1rem;
+      width: 100%;
+    }
+    .credits-section {
+      padding: 1.2rem 0.7rem;
+    }
+  }
+  

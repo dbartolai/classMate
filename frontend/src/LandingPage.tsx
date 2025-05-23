@@ -2,6 +2,8 @@ import React from "react";
 import "./LandingPage.css";
 import WhyItWorks from "./WhyItWorks";
 import Pricing from "./Pricing";
+import QuizCreditsInfo from "./QuizCreditsInfo";
+import CountdownBanner from "./CountdownBanner";
 
 const LandingPage: React.FC = () => {
   return (
@@ -14,6 +16,8 @@ const LandingPage: React.FC = () => {
           <a  className="landing-signup-btn">Sign In</a>
         </nav>
       </header>
+
+      <CountdownBanner/>
 
       <main className="landing-main">
         <section className="landing-hero">
@@ -42,6 +46,7 @@ const LandingPage: React.FC = () => {
 
       <WhyItWorks/>
       <Pricing/>
+      <QuizCreditsInfo/>
 
       <footer className="landing-footer" id="about">
         <p>Made by students, for students. &copy; {new Date().getFullYear()} ClassMate</p>

@@ -179,6 +179,11 @@
     background: #157a8c;
     transform: scale(1.04);
   }
+
+  .pricing-btn:active {
+    background: #116573;
+    transform: scale(0.97);
+  }
   
   @media (max-width: 900px) {
     .pricing-cards {
