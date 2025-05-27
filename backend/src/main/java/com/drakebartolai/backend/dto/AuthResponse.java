@@ -1,17 +1,31 @@
 package com.drakebartolai.backend.dto;
+import java.util.UUID;
+import java.lang.String;
+
 
 public class AuthResponse {
-    private String token;
+    private String email;
+    private UUID id;
 
-    public AuthResponse(String token){
-        this.token = token;
+    public AuthResponse(String email, UUID id) {
+        this.email = email;
+        this.id = id;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public String getEmail(){
+        return this.email;
     }
 
-    public String getToken(){
-        return this.token;
+    public void setEmail(String email) {
+        this.email = email;
     }
+
+    public UUID getId() {
+        return this.id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
 }

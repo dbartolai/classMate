@@ -20,6 +20,7 @@ function Register() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password /*, name, etc */ }),
+            credentials: "include",
           });
       
           if (!registerRes.ok) {
@@ -37,6 +38,7 @@ function Register() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password }),
+            credentials: "include",
           });
       
           if (!loginRes.ok) {
@@ -60,7 +62,6 @@ function Register() {
         <div className="login-form-div">
             <form className="login-form">
                 <h1 className="login-title">ClassMate</h1>
-                <p className="login-subtitle">Register to continue</p>
                 <label htmlFor="email" className="login-label">Email: </label>
                 <input 
                     id="email" 

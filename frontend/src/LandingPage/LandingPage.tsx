@@ -13,7 +13,7 @@ const LandingPage: React.FC = () => {
         <nav>
           <a href="#features" className="nav-link">Features</a>
           <a href="#pricing" className="nav-link">Pricing</a>
-          <a  className="landing-signup-btn">Sign In</a>
+          <a  className="landing-signup-btn" href="/login">Sign In</a>
         </nav>
       </header>
 
@@ -24,9 +24,9 @@ const LandingPage: React.FC = () => {
           <h1>Your path to an <span className="highlight">A</span><br/>fully mapped.</h1>
           <p>
             <span className="">Take the guesswork out of studying with ClassMate.</span><br/>
-            Our personalized study plans are <span className="bold">100% tailored</span> to your performance, so you'll always know what to study.
+            Our personalized study plans are <span className="bold">100% tailored</span> to your performance, so you'll never feel lost.
           </p>
-          <a href="#signup" className="landing-cta">Get Started Free</a>
+          <a href="/register" className="landing-cta">Get Started for Free!</a>
         </section>
         <section className="landing-features" id="features">
           <div className="feature-card">

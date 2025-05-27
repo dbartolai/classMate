@@ -51,7 +51,6 @@ function Login() {
         <div className="login-form-div">
             <form className="login-form">
                 <h1 className="login-title">ClassMate</h1>
-                <p className="login-subtitle">Login to continue</p>
                 <label htmlFor="email" className="login-label">Email: </label>
                 <input 
                     id="email" 
