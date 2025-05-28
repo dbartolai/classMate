@@ -23,6 +23,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import java.util.Collections;
+
+
 
 import java.time.Duration;
 import java.util.UUID;
@@ -181,16 +184,19 @@ public class AuthController {
     @GetMapping("/me")
     public ResponseEntity<?> getCurrentUser(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("Auth principal: " + authentication.getPrincipal());
+
+
 
         if (authentication == null || !authentication.isAuthenticated() || authentication.getPrincipal().equals("anonymousUser")) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("message", "Not authenticated"));
         }
 
         String email = authentication.getName();
         User user = userRepository.findByEmail(email).orElse(null);
 
         if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("message", "User not found"));
         }
 
         return ResponseEntity.ok(new AuthResponse(user.getEmail(), user.getId()));

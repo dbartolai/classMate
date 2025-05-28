@@ -1,5 +1,6 @@
 import "./Login.css"
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Register() {
 
@@ -9,17 +10,18 @@ function Register() {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e: React.FormEvent) => {
 
         e.preventDefault();
         setError("");
       
-        // 1. REGISTER the user
         try {
           const registerRes = await fetch("http://localhost:8080/auth/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password /*, name, etc */ }),
+            body: JSON.stringify({ email, password  }),
             credentials: "include",
           });
       
@@ -33,23 +35,9 @@ function Register() {
             return;
           }
       
-          // 2. If registration succeeded, LOGIN immediately
-          const loginRes = await fetch("http://localhost:8080/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-            credentials: "include",
-          });
-      
-          if (!loginRes.ok) {
-            setError("Registration succeeded, but login failed. Please log in manually.");
-            return;
-          }
-      
-          const loginData = await loginRes.json();
-          localStorage.setItem("token", loginData.token);
-          console.log("Registration & login successful! Token:", loginData.token);
-          // onLogin(); // Or redirect, etc.
+
+          navigate("/welcome")
+
       
         } catch {
           setError("Network error. Please try again.");

@@ -1,5 +1,8 @@
 import "./Login.css"
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useUser } from '../UserContext'; // Adjust path if needed
+
 
 function Login() {
 
@@ -8,6 +11,11 @@ function Login() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
+
+    const navigate = useNavigate();
+
+    const { setUser } = useUser();
+
 
     const handleSubmit = async (e: React.FormEvent) => {
 
@@ -20,6 +28,7 @@ function Login() {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
                 body: JSON.stringify({
                     email,
                     password,
@@ -30,14 +39,18 @@ function Login() {
                 const err = await res.json()
                 setError(err.message || "invalid credentials")
                 return
+            }       
+
+            const userRes = await fetch('/auth/me', {credentials: "include" })
+            if (userRes.ok) {
+                const userData = await userRes.json();
+                setUser(userData);
+            } else {
+                setUser(null)
             }
-
-            const data = await res.json()
-            localStorage.setItem("token", data.token)
-
-            console.log("Login successful! Token:", data.token);
-
-            
+          
+            navigate("/dashboard");
+          
 
         } catch {
             setError("Invalid credentials");
