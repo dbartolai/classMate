@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./Onboarding.css";
 
 const useCaseOptions = [
-  { label: "College Classes", value: "college" },
-  { label: "High School Classes", value: "highschool" },
-  { label: "Middle School Classes", value: "middleschool" },
+  { label: "College ", value: "college" },
+  { label: "High School", value: "highschool" },
+  { label: "Middle School", value: "middleschool" },
   { label: "Test Prep", value: "testprep" },
   { label: "Interview Prep", value: "interview" },
   { label: "Other", value: "other" },
@@ -20,6 +20,8 @@ const Onboarding: React.FC = () => {
   const [test, setTest] = useState("");
   // Interview
   const [role, setRole] = useState("");
+  // Other
+  const [explain, setExplain] = useState("");
 
   const handleAddClass = () => setClasses([...classes, ""]);
   const handleClassChange = (i: number, value: string) => {
@@ -38,7 +40,7 @@ const Onboarding: React.FC = () => {
       return true;
     if (useCase === "testprep" && !test.trim()) return true;
     if (useCase === "interview" && !role.trim()) return true;
-    if (useCase == "other") return false;
+    if (useCase === "other" && !explain.trim()) return true;
     return false;
   };
 
@@ -169,8 +171,8 @@ const Onboarding: React.FC = () => {
               className="onboard-input"
               type="text"
               placeholder="E.g. Personal learning, Teaching, etc."
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
+              value={explain}
+              onChange={(e) => setExplain(e.target.value)}
               autoComplete="off"
             />
           </div>
