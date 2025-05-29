@@ -12,7 +12,7 @@ const ProtectedRoute = () => {
   }
 
   if (user === null) {
-    console.log("user == null")
+    console.log("user == undefined")
     return <Navigate to="/login" replace />;
   }
   

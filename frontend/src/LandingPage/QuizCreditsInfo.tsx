@@ -11,9 +11,9 @@ const QuizCreditsInfo: React.FC = () => (
              Each time you request a custom quiz or study plan, you pay with credits!  
         </p>
         <ul>
-          <li>One credit = ten quiz questions</li>
-          <li>Frequency of quizzes depend on your needs and habits</li>
-          <li>No expiration—use them when you need them</li>
+          <li>1 credit = 10 quiz questions</li>
+          <li>5 quiz credits = 1 doc upload</li>
+          <li>No expiration. Use them when you need them</li>
           <li>Credits DO roll over from month to month</li>
           
         </ul>
@@ -24,7 +24,7 @@ const QuizCreditsInfo: React.FC = () => (
           Generating high-quality, personalized quizzes takes real computing power.
           <span className="highlight">Quiz credits help us cover those costs,</span> so we can keep the platform fast, fair, and affordable for everyone.
 
-          <br/> <br/> Hint: A regular user should only need about 10-15 credits each week.
+          <br/> <br/> All of our plans provide <span className="highlight">more than enough</span> quiz credits, we just need no make sure nobody abuses our platform!
           
         </p>
         

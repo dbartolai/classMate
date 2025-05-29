@@ -23,11 +23,11 @@ public class Test {
     private UUID id = UUID.randomUUID();
 
     @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)
+    @JoinColumn(name = "course_id", nullable = true) //null in case you have a one-off test/interview
     private Course course;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = true)
     private Category category;
 
     @Column(nullable = false)

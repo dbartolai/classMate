@@ -19,6 +19,13 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Collections;
 
+/*  ---------- JWT AUTHORIZATION FILTER ----------
+    * Looks for a JWT in header or cookies
+    * Extracts user email from the token
+    * Validates the token and user via db
+    * If validated, tell Spring Security
+    ----------------------------------------------  */
+
 
 public class JwtAuthFilter extends OncePerRequestFilter {
 
@@ -41,6 +48,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String token = null;
 
+        // Check the Auth header and cookies for a token
+
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             token = authHeader.substring(7);
         } else if (request.getCookies() != null) {
@@ -54,34 +63,28 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             }
         }
 
+        // If the token is found, parse the email
+
         if (token != null) {
-            System.out.println("JwtAuthFilter: About to extract email from token");
+
             String email = jwtUtil.extractEmail(token);
-            System.out.println("JwtAuthFilter: email = " + email);
 
             if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+
                 User user = userRepository.findByEmail(email).orElse(null);
-                System.out.println("JwtAuthFilter: user = " + user);
 
                 if (user != null && jwtUtil.validateToken(token, email)) {
-                    System.out.println("JwtAuthFilter: Token validated, setting authentication");
-                    // ...rest of your code...
-                        UsernamePasswordAuthenticationToken authToken =
-                            new UsernamePasswordAuthenticationToken(email, null, Collections.emptyList());
+
+                    // Tell Spring Security we are loggeed in
+                    UsernamePasswordAuthenticationToken authToken =
+                        new UsernamePasswordAuthenticationToken(email, null, Collections.emptyList());
 
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authToken);
 
-                } else {
-                    System.out.println("JwtAuthFilter: Token invalid or user not found");
-                }
-            } else {
-                System.out.println("JwtAuthFilter: Email extraction failed or authentication already present");
-            }
-        } else {
-            System.out.println("JwtAuthFilter: No token found in header or cookie");
-        }
-
+                } 
+            } 
+        } 
 
 
         filterChain.doFilter(request, response);

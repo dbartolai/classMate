@@ -41,8 +41,7 @@ const CountdownBanner: React.FC = () => {
           </span>
           <span className="banner-offer">
             &nbsp;Join the waitlist and get your first semester for just
-            <span className="bigdeal">$25!</span>
-            <span className="normal">(normally $50)</span>
+            <span className="bigdeal">$30!</span>
           </span>
         </span>
       </div>

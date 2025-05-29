@@ -18,7 +18,7 @@ CREATE TABLE courses (
     id UUID PRIMARY KEY,
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
     name TEXT NOT NULL,
-    semester TEXT
+    semester INT NOT NULL
 );
 
 -- =====================

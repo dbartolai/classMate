@@ -15,7 +15,7 @@ import java.util.UUID;
 public class User {
 
     @Id
-    private UUID id = UUID.randomUUID(); 
+    private UUID id; 
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -28,6 +28,9 @@ public class User {
 
     @Column(nullable = true)
     private String name;
+
+    @Column
+    private int onboarding;
 
     @PrePersist
     protected void onCreate() {

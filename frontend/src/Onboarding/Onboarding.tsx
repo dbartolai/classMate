@@ -42,6 +42,7 @@ const Onboarding: React.FC = () => {
     return false;
   };
 
+
   return (
     <div className="onboard-root">
       <div className="onboard-card">

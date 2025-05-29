@@ -29,7 +29,8 @@ function Register() {
             let errMsg = "Registration failed.";
             try {
               const err = await registerRes.json();
-              errMsg = err.message || errMsg;
+              errMsg = err.error;
+              console.log(err);
             } catch {}
             setError(errMsg);
             return;

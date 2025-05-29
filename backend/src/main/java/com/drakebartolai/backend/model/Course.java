@@ -24,5 +24,5 @@ public class Course {
     private String name;
 
     @Column
-    private String semester;
+    private int semester;
 }

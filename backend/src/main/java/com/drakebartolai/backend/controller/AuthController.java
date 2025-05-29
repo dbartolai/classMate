@@ -24,6 +24,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.util.Collections;
+import java.util.Map;
+
 
 
 
@@ -58,7 +60,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody AuthRequest request, HttpServletResponse response) {
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
-            return ResponseEntity.badRequest().body("Email already in use");
+            return ResponseEntity.badRequest().body(Map.of("error", "Email already in use."));
         }
 
         // Create user
@@ -66,6 +68,7 @@ public class AuthController {
         user.setId(UUID.randomUUID());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setOnboarding(0);
         userRepository.save(user);
 
         // Auto-login logic (same as login)

@@ -16,6 +16,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/*  ---------- SECURITY CONFIG ----------
+    * A config class for Spring Security
+    * All auth endpoints are unprotected
+    * Check for JWT before User/Pass
+    * Hashes passwords with Bcrypt
+*/
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
