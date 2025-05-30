@@ -1,5 +1,7 @@
 .onboard-root {
     min-height: 100vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
     width: 100vw;
     background: linear-gradient(120deg, #f8ffe5 0%, #e3f6f5 100%);
     display: flex;

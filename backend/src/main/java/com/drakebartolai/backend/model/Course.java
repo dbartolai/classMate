@@ -14,7 +14,8 @@ import java.util.UUID;
 public class Course {
 
     @Id
-    private UUID id = UUID.randomUUID();  
+    @GeneratedValue
+    private UUID id;  
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

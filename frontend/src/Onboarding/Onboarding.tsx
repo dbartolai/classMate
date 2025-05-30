@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import "./Onboarding.css";
 
-const useCaseOptions = [
-  { label: "College ", value: "college" },
+const gradeLevelOptions = [
+  { label: "College", value: "college" },
   { label: "High School", value: "highschool" },
   { label: "Middle School", value: "middleschool" },
-  { label: "Test Prep", value: "testprep" },
-  { label: "Interview Prep", value: "interview" },
+];
+
+const otherPrepOptions = [
+  { label: "Test", value: "testprep" },
+  { label: "Interview", value: "interview" },
   { label: "Other", value: "other" },
 ];
 
 const Onboarding: React.FC = () => {
   const [name, setName] = useState("");
-  const [useCase, setUseCase] = useState<string | null>(null);
-
-  // Classes for HS/College/MS
+  const [gradeLevel, setGradeLevel] = useState<string | null>(null);
+  const [otherSelected, setOtherSelected] = useState<string[]>([]);
   const [classes, setClasses] = useState<string[]>([""]);
-  // Test prep
   const [test, setTest] = useState("");
-  // Interview
   const [role, setRole] = useState("");
-  // Other
   const [explain, setExplain] = useState("");
 
   const handleAddClass = () => setClasses([...classes, ""]);
@@ -31,19 +30,26 @@ const Onboarding: React.FC = () => {
     setClasses(classes.filter((_, idx) => idx !== i));
   };
 
+  const handleOtherToggle = (value: string) => {
+    setOtherSelected((prev) =>
+      prev.includes(value)
+        ? prev.filter((v) => v !== value)
+        : [...prev, value]
+    );
+  };
+
   const isNextDisabled = () => {
-    if (!name.trim() || !useCase) return true;
+    if (!name.trim() || !gradeLevel) return true;
     if (
-      ["highschool", "college", "middleschool"].includes(useCase) &&
+      ["highschool", "college", "middleschool"].includes(gradeLevel) &&
       classes.some((c) => !c.trim())
     )
       return true;
-    if (useCase === "testprep" && !test.trim()) return true;
-    if (useCase === "interview" && !role.trim()) return true;
-    if (useCase === "other" && !explain.trim()) return true;
+    if (otherSelected.includes("testprep") && !test.trim()) return true;
+    if (otherSelected.includes("interview") && !role.trim()) return true;
+    if (otherSelected.includes("other") && !explain.trim()) return true;
     return false;
   };
-
 
   return (
     <div className="onboard-root">
@@ -68,17 +74,16 @@ const Onboarding: React.FC = () => {
           />
         </div>
 
+        {/* Grade Level Section */}
         <div className="onboard-section">
-          <label className="onboard-label">What brings you to ClassMate?</label>
+          <label className="onboard-label">Select your grade level.</label>
           <div className="onboard-options">
-            {useCaseOptions.map((opt) => (
+            {gradeLevelOptions.map((opt) => (
               <button
                 type="button"
                 key={opt.value}
-                className={`onboard-option-btn ${
-                  useCase === opt.value ? "selected" : ""
-                }`}
-                onClick={() => setUseCase(opt.value)}
+                className={`onboard-option-btn ${gradeLevel === opt.value ? "selected" : ""}`}
+                onClick={() => setGradeLevel(opt.value)}
               >
                 {opt.label}
               </button>
@@ -86,15 +91,32 @@ const Onboarding: React.FC = () => {
           </div>
         </div>
 
-        {/* Dynamic Sections */}
-        {(useCase === "highschool" ||
-          useCase === "college" ||
-          useCase === "middleschool") && (
+        {/* Other Prep Section */}
+        <div className="onboard-section">
+          <label className="onboard-label">Anything else you would like to prep for?</label>
+          <div className="onboard-options">
+            {otherPrepOptions.map((opt) => (
+              <button
+                type="button"
+                key={opt.value}
+                className={`onboard-option-btn ${otherSelected.includes(opt.value) ? "selected" : ""}`}
+                onClick={() => handleOtherToggle(opt.value)}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Dynamic Inputs based on selections */}
+        {(gradeLevel === "highschool" ||
+          gradeLevel === "college" ||
+          gradeLevel === "middleschool") && (
           <div className="onboard-section">
             <label className="onboard-label">
-              {useCase === "college"
+              {gradeLevel === "college"
                 ? "What college classes are you taking?"
-                : useCase === "highschool"
+                : gradeLevel === "highschool"
                 ? "What high school classes are you taking?"
                 : "What middle school classes are you taking?"}
             </label>
@@ -108,7 +130,7 @@ const Onboarding: React.FC = () => {
                   onChange={(e) => handleClassChange(i, e.target.value)}
                   autoComplete="off"
                 />
-                {classes.length > 1 && (
+                {classes.length >= 1 && (
                   <button
                     type="button"
                     className="onboard-remove-btn"
@@ -125,12 +147,12 @@ const Onboarding: React.FC = () => {
               className="onboard-add-btn"
               onClick={handleAddClass}
             >
-              + Add another class
+              {classes.length >= 1 ? "+ Add another class" : "+ Add a class"}
             </button>
           </div>
         )}
 
-        {useCase === "testprep" && (
+        {otherSelected.includes("testprep") && (
           <div className="onboard-section">
             <label className="onboard-label">
               What test(s) are you prepping for?
@@ -146,7 +168,7 @@ const Onboarding: React.FC = () => {
           </div>
         )}
 
-        {useCase === "interview" && (
+        {otherSelected.includes("interview") && (
           <div className="onboard-section">
             <label className="onboard-label">
               What kind of interview are you prepping for?
@@ -162,7 +184,7 @@ const Onboarding: React.FC = () => {
           </div>
         )}
 
-        {useCase === "other" && (
+        {otherSelected.includes("other") && (
           <div className="onboard-section">
             <label className="onboard-label">
               Please explain.
@@ -181,7 +203,7 @@ const Onboarding: React.FC = () => {
         <button
           className="onboard-cta"
           disabled={isNextDisabled()}
-          // onClick={handleNext} // Hook up your real next logic here!
+          // onClick={handleNext}
         >
           Next
         </button>
