@@ -1,0 +1,111 @@
+.info-popup-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.4em;
+  vertical-align: middle;
+}
+
+.info-icon-btn {
+  background: #e3f6f5;
+  color: #1b9aaa;
+  border: none;
+  border-radius: 50%;
+  width: 1.6em;
+  height: 1.6em;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.14s, color 0.14s, transform 0.14s;
+  box-shadow: 0 1px 6px 0 rgba(27, 154, 170, 0.08);
+  padding: 0;
+  outline: none;
+}
+
+.info-icon-btn:hover, .info-icon-btn:focus {
+  background: #c2eeed;
+  color: #178594;
+}
+
+.info-icon-btn:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.info-icon-btn:active{
+  transform: scale(0.95);
+}
+
+.info-icon {
+  font-weight: bold;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-popup-card {
+  /* Changed for right-side popup: */
+  position: absolute;
+  left: 2.3em;           /* Distance from the '?' button */
+  top: 50%;              /* Vertically center on the button */
+  transform: translateY(-50%); /* Center popup vertically to button */
+  min-width: 250px;
+  max-width: 320px;
+  background: #fff;
+  border: 1.5px solid #1b9aaa;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 rgba(27, 154, 170, 0.18);
+  padding: 1.1em 1.15em 0.85em 1.15em;
+  z-index: 10;
+  animation: fadeInRight 0.17s;
+}
+
+/* Fade out for right-side popup */
+.info-popup-card.fade-out {
+  animation: fadeOutRight 0.17s forwards;
+}
+
+/* Right-side fadeIn/out keyframes */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateY(-50%) translateX(-22px);}
+  to   { opacity: 1; transform: translateY(-50%) translateX(0);}
+}
+@keyframes fadeOutRight {
+  from { opacity: 1; transform: translateY(-50%) translateX(0);}
+  to   { opacity: 0; transform: translateY(-50%) translateX(-22px);}
+}
+
+.info-popup-content {
+  color: #222d3c;
+  font-size: 1.01em;
+  margin-bottom: 0.75em;
+}
+
+.info-popup-dismiss {
+  display: block;
+  margin: 0 auto;
+  background: #1b9aaa;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.38em 1.15em;
+  font-size: 0.97em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 1px 7px 0 rgba(27, 154, 170, 0.08);
+  transition: background 0.16s, transform 0.15s;
+}
+.info-popup-dismiss:hover, .info-popup-dismiss:focus {
+  background: #157a8c;
+}
+
+.info-popup-dismiss:hover{
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.info-popup-dismiss:active{
+  transform: scale(0.98);
+}
+

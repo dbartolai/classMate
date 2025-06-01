@@ -22,7 +22,11 @@ public class Course {
     private User user;  
 
     @Column(nullable = false)
-    private String name;
+    private String name; 
+
+    @Column(nullable = false)
+    private String code;
+
 
     @Column
     private int semester;
