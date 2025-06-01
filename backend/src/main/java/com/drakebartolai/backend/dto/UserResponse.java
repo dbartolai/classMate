@@ -9,7 +9,9 @@ import lombok.AllArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CourseRequest {
+public class UserResponse {
+    private UUID id;
+    private String email; 
     private String name;
-    private int semester; // Ex. Fall '25 -> 20254 (Fall is 4th semester)
+    private int onboarding;
 }

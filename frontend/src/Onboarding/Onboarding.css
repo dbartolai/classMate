@@ -1,178 +1,236 @@
 .onboard-root {
-    min-height: 100vh;
-    padding-top: 10vh;
-    padding-bottom: 10vh;
-    width: 100vw;
-    background: linear-gradient(120deg, #f8ffe5 0%, #e3f6f5 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  }
-  
+  min-height: 100vh;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  width: 100vw;
+  background: linear-gradient(120deg, #f8ffe5 0%, #e3f6f5 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.onboard-card {
+  background: rgba(255,255,255,0.94);
+  padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 32px 0 rgba(27, 154, 170, 0.12);
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.onboard-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #1b9aaa;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.onboard-subtitle {
+  font-size: 1.08rem;
+  color: #44475a;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.onboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.onboard-label {
+  font-weight: 600;
+  color: #21243d;
+  margin-bottom: 0.1em;
+}
+
+.onboard-input {
+  background: #e3f6f5;
+  border: 1.5px solid #1b9aaa;
+  border-radius: 13px;
+  padding: 0.7em 1em;
+  font-size: 1.06rem;
+  color: #21243d;
+  outline: none;
+  transition: border-color 0.19s, box-shadow 0.15s;
+  margin-bottom: 0.2em;
+}
+.onboard-input:focus {
+  border-color: #178290;
+  box-shadow: 0 2px 8px 0 rgba(224, 122, 95, 0.11);
+}
+
+.onboard-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7em;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+.onboard-option-btn {
+  border: 1.5px solid #1b9aaa;
+  background: #fff;
+  color: #1b9aaa;
+  padding: 0.45em 1.2em;
+  border-radius: 22px;
+  font-size: 1.03rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.18s, color 0.19s, transform 0.13s;
+}
+.onboard-option-btn:hover {
+  background: #e3f6f5;
+  color: #178594;
+  transform: scale(1.04);
+}
+.onboard-option-btn.selected {
+  background: #1b9aaa;
+  color: #fff;
+  border-color: #1b9aaa;
+  transform: scale(1.06);
+  font-weight: 600;
+}
+
+.onboard-class-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.15em;
+}
+
+.onboard-class-input {
+  flex: 1;
+}
+
+.onboard-add-btn {
+  margin-top: 0.1em;
+  border: none;
+  background: transparent;
+  color: #e07a5f;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.02rem;
+  padding: 0.2em 0.6em;
+  border-radius: 10px;
+  transition: background 0.14s;
+}
+.onboard-add-btn:hover {
+  background: #fff3ec;
+}
+
+.onboard-remove-btn {
+  background: none;
+  border: none;
+  color: #e07a5f;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.16s;
+  margin-left: 0.1em;
+  padding: 0.05em 0.2em;
+  border-radius: 5px;
+}
+.onboard-remove-btn:hover {
+  color: #b75539;
+  background: #ffebe1;
+}
+
+.onboard-cta {
+  margin-top: 1.4rem;
+  background: #1b9aaa;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.72em 2.3em;
+  font-size: 1.12rem;
+  font-weight: 600;
+  box-shadow: 0 2px 12px 0 rgba(27, 154, 170, 0.09);
+  transition: background 0.18s, transform 0.15s, opacity 0.14s;
+  cursor: pointer;
+}
+.onboard-cta:hover:not(:disabled) {
+  background: #157a8c;
+  transform: scale(1.03);
+}
+.onboard-cta:active:not(:disabled) {
+  background: #126776;
+  transform: scale(0.97);
+}
+.onboard-cta:disabled {
+  background: #9ad6db;
+  color: #e7e7e7;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 600px) {
   .onboard-card {
-    background: rgba(255,255,255,0.94);
-    padding: 2.7rem 2.2rem 2.2rem 2.2rem;
-    border-radius: 2rem;
-    box-shadow: 0 4px 32px 0 rgba(27, 154, 170, 0.12);
-    max-width: 520px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1.35rem;
+    padding: 1.5rem 0.7rem 1.5rem 0.7rem;
+    border-radius: 1.1rem;
   }
-  
-  .onboard-title {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #1b9aaa;
-    margin-bottom: 0.3rem;
-    letter-spacing: -0.5px;
-    text-align: center;
-  }
-  
-  .onboard-subtitle {
-    font-size: 1.08rem;
-    color: #44475a;
-    margin-bottom: 1.2rem;
-    text-align: center;
-  }
-  
-  .onboard-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  
-  .onboard-label {
-    font-weight: 600;
-    color: #21243d;
-    margin-bottom: 0.1em;
-  }
-  
-  .onboard-input {
-    background: #e3f6f5;
-    border: 1.5px solid #1b9aaa;
-    border-radius: 13px;
-    padding: 0.7em 1em;
-    font-size: 1.06rem;
-    color: #21243d;
-    outline: none;
-    transition: border-color 0.19s, box-shadow 0.15s;
-    margin-bottom: 0.2em;
-  }
-  .onboard-input:focus {
-    border-color: #178290;
-    box-shadow: 0 2px 8px 0 rgba(224, 122, 95, 0.11);
-  }
-  
-  .onboard-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7em;
-    margin-top: 0.1em;
-    margin-bottom: 0.1em;
-  }
-  .onboard-option-btn {
-    border: 1.5px solid #1b9aaa;
-    background: #fff;
-    color: #1b9aaa;
-    padding: 0.45em 1.2em;
-    border-radius: 22px;
-    font-size: 1.03rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.18s, color 0.19s, transform 0.13s;
-  }
-  .onboard-option-btn:hover {
-    background: #e3f6f5;
-    color: #178594;
-    transform: scale(1.04);
-  }
-  .onboard-option-btn.selected {
-    background: #1b9aaa;
-    color: #fff;
-    border-color: #1b9aaa;
-    transform: scale(1.06);
-    font-weight: 600;
-  }
-  
-  .onboard-class-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    margin-bottom: 0.15em;
-  }
-  
-  .onboard-class-input {
-    flex: 1;
-  }
-  
-  .onboard-add-btn {
-    margin-top: 0.1em;
-    border: none;
-    background: transparent;
-    color: #e07a5f;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 1.02rem;
-    padding: 0.2em 0.6em;
-    border-radius: 10px;
-    transition: background 0.14s;
-  }
-  .onboard-add-btn:hover {
-    background: #fff3ec;
-  }
-  
-  .onboard-remove-btn {
-    background: none;
-    border: none;
-    color: #e07a5f;
-    font-size: 1.3rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.16s;
-    margin-left: 0.1em;
-    padding: 0.05em 0.2em;
-    border-radius: 5px;
-  }
-  .onboard-remove-btn:hover {
-    color: #b75539;
-    background: #ffebe1;
-  }
-  
-  .onboard-cta {
-    margin-top: 1.4rem;
-    background: #1b9aaa;
-    color: #fff;
-    border: none;
-    border-radius: 999px;
-    padding: 0.72em 2.3em;
-    font-size: 1.12rem;
-    font-weight: 600;
-    box-shadow: 0 2px 12px 0 rgba(27, 154, 170, 0.09);
-    transition: background 0.18s, transform 0.15s, opacity 0.14s;
-    cursor: pointer;
-  }
-  .onboard-cta:hover:not(:disabled) {
-    background: #157a8c;
-    transform: scale(1.03);
-  }
-  .onboard-cta:active:not(:disabled) {
-    background: #126776;
-    transform: scale(0.97);
-  }
-  .onboard-cta:disabled {
-    background: #9ad6db;
-    color: #e7e7e7;
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-  
-  @media (max-width: 600px) {
-    .onboard-card {
-      padding: 1.5rem 0.7rem 1.5rem 0.7rem;
-      border-radius: 1.1rem;
-    }
-  }
-  
+}
+
+
+.onboard-semester-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2em;
+  margin-bottom: 0.2em;
+}
+
+.onboard-semester-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18em;
+  min-width: 120px;
+}
+
+.onboard-semester-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #e3f6f5;
+  border: 1.5px solid #1b9aaa;
+  border-radius: 13px;
+  padding: 0.6em 0.8em;
+  font-size: 1.07rem;
+  color: #21243d;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.14s; transform: 0.15s;
+  text-align: center;
+}
+
+.onboard-semester-select:focus {
+  border-color: #178290;
+  box-shadow: 0 2px 8px 0 rgba(224, 122, 95, 0.12);
+}
+
+.onboard-semester-select:hover {
+  border-color: #178290;
+  box-shadow: 0 2px 8px 0 rgba(224, 122, 95, 0.12);
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.onboard-semester-year {
+  background: #e3f6f5;
+  border: 1.5px solid #1b9aaa;
+  border-radius: 13px;
+  padding: 0.6em 0.8em;
+  font-size: 1.07rem;
+  color: #21243d;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.14s;
+  width: 5.2em;
+  text-align: center;
+}
+.onboard-semester-year:focus {
+  border-color: #178290;
+  box-shadow: 0 2px 8px 0 rgba(224, 122, 95, 0.12);
+}

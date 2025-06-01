@@ -7,12 +7,10 @@ const ProtectedRoute = () => {
   const { user } = useUser();
 
   if (user === undefined) {
-    console.log("user == undefined")
     return <div>Loading...</div>
   }
 
   if (user === null) {
-    console.log("user == undefined")
     return <Navigate to="/login" replace />;
   }
   

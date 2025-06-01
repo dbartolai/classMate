@@ -47,7 +47,7 @@ const plans = [
 ];
 
 const Pricing: React.FC = () => {
-  const [showEdu, setShowEdu] = useState(false);
+  const [showEdu, setShowEdu] = useState(true);
 
   return (
     <section className="pricing-section" id="pricing">

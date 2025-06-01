@@ -1,6 +1,8 @@
 package com.drakebartolai.backend.controller;
 
 import com.drakebartolai.backend.model.User;
+import com.drakebartolai.backend.model.Course;
+
 import com.drakebartolai.backend.repository.UserRepository;
 import com.drakebartolai.backend.repository.CourseRepository;
 import com.drakebartolai.backend.dto.CourseRequest;
@@ -52,8 +54,8 @@ public class CourseController {
         Course savedCourse = courseRepository.save(course);
 
         CourseResponse response = new CourseResponse(
-            savedCourse.getId(),
             savedCourse.getName(),
+            savedCourse.getId(),
             savedCourse.getSemester()
         );
         
@@ -74,8 +76,8 @@ public class CourseController {
         
         List<CourseResponse> responses = courses.stream()
             .map(course -> new CourseResponse (
-                course.getId(),
                 course.getName(),
+                course.getId(),
                 course.getSemester()
             ))
             .collect(Collectors.toList());

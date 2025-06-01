@@ -41,19 +41,31 @@ function Login() {
                 return
             }       
 
-            const userRes = await fetch('/auth/me', {credentials: "include" })
-            if (userRes.ok) {
-                const userData = await userRes.json();
-                setUser(userData);
+            const authRes = await fetch('http://localhost:8080/auth/me', {credentials: "include" })
+            if (authRes.ok) {
+                const authData = await authRes.json();
+                setUser(authData);
             } else {
                 setUser(null)
             }
-          
-            navigate("/dashboard");
+
+            const userRes = await fetch('/users/me', {credentials: "include" })
+            console.log("users/me")
+            if (userRes.ok) {
+                const userData = await userRes.json();
+                console.log(userData)
+                const nextScreen = userData.onboarding;
+                if (nextScreen === 1) navigate("/nextonboarding");
+                if (nextScreen === 0) navigate("/welcome");
+            } else {
+                console.log("not ok")
+            }
+
+            
           
 
         } catch {
-            setError("Invalid credentials");
+            setError("This error");
         }
 
     }

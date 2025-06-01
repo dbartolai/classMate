@@ -20,10 +20,10 @@ function App() {
           {/* PROTECTED PAGES */}
           <Route element={<ProtectedRoute/>}>
             <Route path="/welcome" element={<Onboarding/>}/>
+            <Route path="/nextonboarding" element={<h1>Next Onboarding</h1>}/>
             <Route path="/dashboard" element={
               <div>
                 <h1> Logged in successfully </h1>
-                
               </div>
               }/>
           </Route>

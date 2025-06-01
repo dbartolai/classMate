@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import type { UserUpdate } from "../types";
+import { useNavigate } from "react-router-dom";
 import "./Onboarding.css";
 
 const gradeLevelOptions = [
@@ -13,6 +15,17 @@ const otherPrepOptions = [
   { label: "Other", value: "other" },
 ];
 
+const semesterOptions = [
+  { label: "Winter", value: 1 },
+  { label: "Spring", value: 2 },
+  { label: "Summer", value: 3 },
+  { label: "Fall", value: 4 },
+];
+
+
+
+
+
 const Onboarding: React.FC = () => {
   const [name, setName] = useState("");
   const [gradeLevel, setGradeLevel] = useState<string | null>(null);
@@ -21,6 +34,14 @@ const Onboarding: React.FC = () => {
   const [test, setTest] = useState("");
   const [role, setRole] = useState("");
   const [explain, setExplain] = useState("");
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 9 }, (_, i) => (currentYear - 2) + i);
+  const [semester, setSemester] = useState<number>(1);
+  const [year, setYear] = useState<number>(currentYear);
+  const [error, setError] = useState<string | null>(null)
+
+  const navigate = useNavigate();
+
 
   const handleAddClass = () => setClasses([...classes, ""]);
   const handleClassChange = (i: number, value: string) => {
@@ -51,6 +72,38 @@ const Onboarding: React.FC = () => {
     return false;
   };
 
+  const handleNext = async () => {
+    try {
+      const update: UserUpdate = {
+        name: name,
+        onboarding: 1
+      }
+
+      console.log(update.password);
+      const res = await fetch("/users/me", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(update),
+      });
+    
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(err || "Failed to update user");
+      }
+      console.log(res)
+      navigate("/nextonboarding")
+
+
+    } catch (e: any) {
+      setError(e.message);
+      console.log(error)
+    }
+  }
+
+
   return (
     <div className="onboard-root">
       <div className="onboard-card">
@@ -61,13 +114,13 @@ const Onboarding: React.FC = () => {
 
         <div className="onboard-section">
           <label className="onboard-label" htmlFor="name-input">
-            What’s your name?
+            What’s your preferred name?
           </label>
           <input
             id="name-input"
             type="text"
             className="onboard-input"
-            placeholder="Enter your preferred name"
+            placeholder="First Name or Nickname"
             value={name}
             onChange={(e) => setName(e.target.value)}
             autoComplete="off"
@@ -76,7 +129,7 @@ const Onboarding: React.FC = () => {
 
         {/* Grade Level Section */}
         <div className="onboard-section">
-          <label className="onboard-label">Select your grade level.</label>
+          <label className="onboard-label">Please select your grade level.</label>
           <div className="onboard-options">
             {gradeLevelOptions.map((opt) => (
               <button
@@ -93,7 +146,7 @@ const Onboarding: React.FC = () => {
 
         {/* Other Prep Section */}
         <div className="onboard-section">
-          <label className="onboard-label">Anything else you would like to prep for?</label>
+          <label className="onboard-label">Anything else you would like to prep for? (Optional)</label>
           <div className="onboard-options">
             {otherPrepOptions.map((opt) => (
               <button
@@ -112,6 +165,43 @@ const Onboarding: React.FC = () => {
         {(gradeLevel === "highschool" ||
           gradeLevel === "college" ||
           gradeLevel === "middleschool") && (
+
+
+          <>
+          <div className="onboard-section onboard-semester-row">
+            <div className="onboard-semester-group">
+              <label className="onboard-label" htmlFor="semester-select">
+                Semester:
+              </label>
+              <select
+                id="semester-select"
+                className="onboard-semester-select"
+                value={semester}
+                onChange={e => setSemester(Number(e.target.value))}
+              >
+                {semesterOptions.map(opt => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="onboard-semester-group">
+              <label className="onboard-label" htmlFor="year-select">
+                Year:
+              </label>
+              <select
+                id="year-select"
+                className="onboard-semester-select"
+                value={year}
+                onChange={e => setYear(Number(e.target.value))}
+              >
+                {years.map(y => (
+                  <option key={y} value={y}>{y}</option>
+                ))}
+              </select>
+            </div>
+          </div>
           <div className="onboard-section">
             <label className="onboard-label">
               {gradeLevel === "college"
@@ -150,6 +240,12 @@ const Onboarding: React.FC = () => {
               {classes.length >= 1 ? "+ Add another class" : "+ Add a class"}
             </button>
           </div>
+          
+          </>
+
+          
+
+
         )}
 
         {otherSelected.includes("testprep") && (
@@ -203,7 +299,7 @@ const Onboarding: React.FC = () => {
         <button
           className="onboard-cta"
           disabled={isNextDisabled()}
-          // onClick={handleNext}
+          onClick={handleNext}
         >
           Next
         </button>
